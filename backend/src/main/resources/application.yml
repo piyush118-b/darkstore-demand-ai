@@ -1,0 +1,66 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: dark-store-demand-forecasting
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/darkstore_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+
+  jpa:
+    hibernate:
+      ddl-auto: validate          # Flyway manages DDL; Hibernate only validates
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+
+# ML microservice URL
+ml-service:
+  base-url: http://localhost:8000
+  predict-endpoint: /predict
+  health-endpoint: /health
+  timeout-seconds: 10
+
+# Reorder engine settings
+reorder:
+  check-interval-ms: 1800000     # 30 minutes
+  default-threshold: 50          # units; trigger reorder below this
+  default-reorder-quantity: 200
+
+# Data ingestion (CSV → DB on startup)
+ingestion:
+  enabled: true
+  csv-path: classpath:data/retail_store_inventory.csv
+  max-rows: 5000                  # limit rows loaded in demo mode
+
+# OpenAPI / Swagger
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+logging:
+  level:
+    com.darkstore: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: WARN
