@@ -3,7 +3,7 @@
 > **Real-time demand forecasting and auto-reorder system for quick-commerce dark stores.**  
 > Predicts short-term inventory demand within 10–20 minute delivery windows using XGBoost ML, SHAP explainability, and automated reorder triggers.
 
-![Javaaa](https://img.shields.io/badge/Java_17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Java](https://img.shields.io/badge/Java_17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot_3.2-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
 ![Python](https://img.shields.io/badge/Python_3.13-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
